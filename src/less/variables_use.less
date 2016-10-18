@@ -13,24 +13,23 @@
 	@text-size: 20px;	// Redefine global variable
 
 	color: @color;
-	// Calculate values w/ ()
 	font: 400 @text-size/@line-height @font;
-	font: 400 (@text-size/@line-height) @font;
+	font: 400 (@text-size/@line-height) @font; // Calculate values w/ ()
 	text-decoration: @text-decoration;
 }
 
-/**
- * Interpolation
- */
+/*------------------------------------------------------------------------------
+/*  Interpolation
+/*----------------------------------------------------------------------------*/
 
 .this-@{selector-name} {
 	@{property}: @color;
 	// background: url("@{dir}/image.png");
 }
 
-/**
- * Variables redefining
- */
+/*------------------------------------------------------------------------------
+/*  Variables redefining
+/*----------------------------------------------------------------------------*/
 
 @var: 0;
 .level-1 {
@@ -39,7 +38,7 @@
 	.level-2 {
 		@var: 2em;
 		margin: @var;
-		// Var hoists to the top of its scope
+		// Var bubbles to the top of its scope
 		@var: 5em;
 	}
 	margin: @var;

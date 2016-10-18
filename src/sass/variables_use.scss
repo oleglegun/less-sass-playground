@@ -6,12 +6,12 @@ $selector_name: h2;
 $dir: 			"../img";
 $property: 		color;
 
-// Sass doesn't support variable hoisting
+// Sass doesn't support variable bubbling
 $text-decoration: underline;
 
-/**
- * Variable interpolation
- */
+/*------------------------------------------------------------------------------
+/*  Variable interpolation
+/*----------------------------------------------------------------------------*/
 
 .h1 {
 	// Overwrite var for this context
@@ -31,7 +31,7 @@ $text-decoration: underline;
 
 .this-#{$selector-name} {  // in selector
 	#{$property}: $color;  // in property name
-	// background: url(#{$dir}/bg.png) // in value
+	background: url(../dummy.jpg) // in value
 }
 
 $var: 0;
@@ -47,9 +47,10 @@ $var: 0;
 	margin: $var;
 }
 
-/**
- * Redefine w/ !default (if was not defined)
- */
+/*------------------------------------------------------------------------------
+/*  Redefine w/ !default (if was not defined)
+/*----------------------------------------------------------------------------*/
+
 $content: "First content";
 $content: "Second content" !default;
 $new_content: "First time content" !default;
@@ -59,9 +60,9 @@ $new_content: "First time content" !default;
 	new_content: $new_content;
 }
 
-/**
- * Concatenation (absent in Less)
- */
+/*------------------------------------------------------------------------------
+/*  Concatenation (absent in Less)
+/*----------------------------------------------------------------------------*/
 
 .concatenate_strings {
 	cursor: $property + -resize;

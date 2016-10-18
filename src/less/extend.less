@@ -1,12 +1,17 @@
 /*------------------------------------------------------------------------------
-/*  Расширение классов (наследование, класс добавится к классу из параметров extend(...))
+/*  :extend pseudo selector
+/*  Selector before :extend will inherit properties from (.selector)
+/*----------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
+/*  Basic Syntax in Less
 /*----------------------------------------------------------------------------*/
 
 .a:extend(.b) {
 }
 
 .a {
-  &:extend(.b); // Same result
+  &:extend(.b); // The same
 }
 
 .class_a {
@@ -31,7 +36,7 @@ nav ul {
 }
 
 /*------------------------------------------------------------------------------
-/*  Расширение классов со всеми вложениями
+/*  Extend w/ all properties
 /*----------------------------------------------------------------------------*/
 
 .error {
@@ -47,14 +52,14 @@ nav ul {
   background-image: url(../dummy.jpg);
 }
 
-// Нужно использовать 'all' чтобы унаследовать и :hover {} + __.intrusion {}
+// Keyword 'all' indicates Less to inherit all nested/pseudo selectors like :hover {} + __.intrusion {}
 .seriousError {
-  &:extend(.error all); // в SCSS не нужен all, расширяется сразу все
+  &:extend(.error all); // in SCSS we don't use 'all' because it's already there
   border-width: 3px;
 }
 
 /*------------------------------------------------------------------------------
-/*  Расширение вложенных селекторов
+/*  Extend w/ nested selectors
 /*----------------------------------------------------------------------------*/
 
 .bucket {
@@ -63,12 +68,12 @@ nav ul {
   }
 }
 
-.some-class:extend(.bucket tr) {
+.some-class:extend(.bucket tr) { // Inherit from 1+ selectors
   display: block;
 }
 
 .hoverlink {
-  &:extend(a:hover); // We can specify state
+  &:extend(a:hover); // We can specify particular state
 }
 
 a:hover {
@@ -76,7 +81,7 @@ a:hover {
 }
 
 /*------------------------------------------------------------------------------
-/*  Множественные расширения
+/*  Multiple extends
 /*----------------------------------------------------------------------------*/
 
 .mega-extend {
@@ -85,11 +90,11 @@ a:hover {
 }
 
 /*------------------------------------------------------------------------------
-/*  Расширение и @media
+/*  Extend & @media constructions
 /*----------------------------------------------------------------------------*/
 
 @media screen {
-  // @media, расширяемые для другого @media контекста не работают
+  // extends in different @media contexts are not working
   .selector_in_media_level_1:extend(.selector_in_media_level_2) {}
 
   @media (min-width: 1024px) {
@@ -102,24 +107,31 @@ a:hover {
 .selector_outside_media:extend(.selector_in_media_level_2) {}
 
 /*------------------------------------------------------------------------------
-/*  Чтобы расширение сработало нужно четкое соответствие селектора!
+/*  Generated selectors don't work w/ extend - must be defined literally
 /*----------------------------------------------------------------------------*/
+
 @variable_1: .bucket_1;
 
-@{variable_1} { // Авто подстановка названия класса
+@{variable_1} {
   color: blue;
 }
 
-.test_class_1:extend(.bucket_1) {} // Не сработает, т.к. изначально в коде нет селектора .bucket_1
+.test_class_1:extend(.bucket_1) {
+}
 
-//После этого объявления уже сработает
+// Error: there is no .bucket_1 selector
+
+// After this define - works
 .bucket_1 {
   color: blue;
 }
 
 @variable_2: .bucket_2;
 
-.test_class_2:extend(@{variable_2}) {} // Тоже не сработает
+.test_class_2:extend(@{variable_2}) {
+}
+
+// Error
 
 .bucket_3 {
   color: blue;
@@ -127,4 +139,7 @@ a:hover {
 
 @variable: .test_class_3;
 
-@{variable}:extend(.bucket_3) {} // Сработает, т.к. изначально был селектор .bucket_3
+@{variable}:extend(.bucket_3) {
+}
+
+// Works

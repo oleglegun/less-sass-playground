@@ -1,21 +1,21 @@
 /*------------------------------------------------------------------------------
-/*  Вложения селекторов
+/*  Nested selectors
 /*----------------------------------------------------------------------------*/
 .class {
   color: blue;
-  // Nested selectors (2 level max)
+  // Nested selectors (2 level max - recommendation)
   a {
     color: green;
     span {
       color: green;
     }
   }
-  // Excellent for BEM
-  &__child {
+
+  &__child { // Excellent for BEM
     color: black;
   }
-  // Group selectors
-  &:hover,
+
+  &:hover, // Group selectors
   &:focus {
     background-color: #fff;
   }
@@ -33,8 +33,7 @@
 
 .parent {
   .child {
-    // & == .parent .child
-    .root & {
+    .root & { // & == .parent .child
       width: 40px;
     }
     &.good {
@@ -43,7 +42,10 @@
   }
 }
 
-// Combinations
+/*------------------------------------------------------------------------------
+/*  Combinations
+/*----------------------------------------------------------------------------*/
+
 p, ul, ol {
   & + & {
     margin-top: 0;

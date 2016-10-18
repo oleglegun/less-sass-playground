@@ -1,7 +1,7 @@
 {
   "name": "less_sass_playground",
   "version": "1.0.0",
-  "description": "Less/Scss playground",
+  "description": "Less/Sass playground",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --watch --config webpack.dev"

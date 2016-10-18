@@ -1,6 +1,6 @@
-/**
- * Математические операции
- */
+/*------------------------------------------------------------------------------
+/*  Math operations in Less
+/*----------------------------------------------------------------------------*/
 
 @text-size: 	14px;
 @line-height: 	1.4em;
@@ -13,15 +13,15 @@
 	line-height: 	ceil(3.4);
 	line-height: 	floor(3.4);
 	line-height: 	round(1.67);
-	line-height: 	round(1.67, 1); // с разрядностью
+	line-height: round(1.67, 1); // 1 - decimal places
 	margin-top: 	min(3px, 42px, 1px, 16px);
 	margin-bottom: 	max(3px, 42px, 1px, 16px);
 }
 
 .class_2 {
-	margin-top: 	4px + 1; //px
+	margin-top: 4px + 1; //px
 	margin-right: 	4px - 2em; // == 4 - 2 => px!
-	margin-bottom: 	4px * 2; // px
+	margin-bottom: 4px * 2; // px
 	margin-left: 	4px / 2em; // px
 
 	border: (@border * 2) solid @color;
@@ -39,17 +39,16 @@
 	padding-left: 	@text-size * 2vh;
 }
 
-
-////////////////////
-// Math w/ colors //
-////////////////////
+/*------------------------------------------------------------------------------
+/*  Math w/ colors
+/*----------------------------------------------------------------------------*/
 
 .color_01 {
 	color: rgba(255,0,0,.75) + rgba(0,255,0,.75); // Opacity is summed
 }
 
 .color_02 {
-	color: (#888888 / 2); // () for math evaluation
+	color: (#888888 / 2); // using () to force math evaluation
 }
 
 .color_03 {
