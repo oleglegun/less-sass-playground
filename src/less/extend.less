@@ -95,7 +95,8 @@ a:hover {
 
 @media screen {
   // extends in different @media contexts are not working
-  .selector_in_media_level_1:extend(.selector_in_media_level_2) {}
+  .selector_in_media_level_1:extend(.selector_in_media_level_2) {
+  }
 
   @media (min-width: 1024px) {
     .selector_in_media_level_2 {
@@ -104,7 +105,8 @@ a:hover {
   }
 }
 
-.selector_outside_media:extend(.selector_in_media_level_2) {}
+.selector_outside_media:extend(.selector_in_media_level_2) {
+}
 
 /*------------------------------------------------------------------------------
 /*  Generated selectors don't work w/ extend - must be defined literally

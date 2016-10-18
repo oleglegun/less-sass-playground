@@ -1,21 +1,22 @@
 @import './components/btn.less';
-@text-size: 		10px;
-@line-height: 		1.4;
-@color: 			#000;
+
+@text-size: 10px;
+@line-height: 1.4;
+@color: #000;
 // Strings
-@font: 				Arial, Helvetica, sans-serif;
-@selector-name: 	h2;
-@dir: 				"../img";
-@property: 			color;
-@text-decoration: 	underline;
+@font: Arial, Helvetica, sans-serif;
+@selector-name: h2;
+@dir: "../img";
+@property: color;
+@text-decoration: underline;
 
 .h1 {
-	@text-size: 20px;	// Redefine global variable
+  @text-size: 20px; // Redefine global variable
 
-	color: @color;
-	font: 400 @text-size/@line-height @font;
-	font: 400 (@text-size/@line-height) @font; // Calculate values w/ ()
-	text-decoration: @text-decoration;
+  color: @color;
+  font: 400 @text-size/@line-height @font;
+  font: 400 (@text-size/@line-height) @font; // Calculate values w/ ()
+  text-decoration: @text-decoration;
 }
 
 /*------------------------------------------------------------------------------
@@ -23,8 +24,8 @@
 /*----------------------------------------------------------------------------*/
 
 .this-@{selector-name} {
-	@{property}: @color;
-	// background: url("@{dir}/image.png");
+    @{property}: @color;
+  // background: url("@{dir}/image.png");
 }
 
 /*------------------------------------------------------------------------------
@@ -33,13 +34,13 @@
 
 @var: 0;
 .level-1 {
-	// Visible only in context of .level-1
-	@var: 1em;
-	.level-2 {
-		@var: 2em;
-		margin: @var;
-		// Var bubbles to the top of its scope
-		@var: 5em;
-	}
-	margin: @var;
+  // Visible only in context of .level-1
+  @var: 1em;
+  .level-2 {
+    @var: 2em;
+    margin: @var;
+    // Var bubbles to the top of its scope
+    @var: 5em;
+  }
+  margin: @var;
 }

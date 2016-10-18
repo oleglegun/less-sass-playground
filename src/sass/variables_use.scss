@@ -1,10 +1,10 @@
-$text-size: 	10px;
-$line-height: 	1.4;
-$font: 			Arial, Helvetica, sans-serif;
-$color: 		#000;
+$text-size: 10px;
+$line-height: 1.4;
+$font: Arial, Helvetica, sans-serif;
+$color: #000;
 $selector_name: h2;
-$dir: 			"../img";
-$property: 		color;
+$dir: "../img";
+$property: color;
 
 // Sass doesn't support variable bubbling
 $text-decoration: underline;
@@ -14,37 +14,37 @@ $text-decoration: underline;
 /*----------------------------------------------------------------------------*/
 
 .h1 {
-	// Overwrite var for this context
-	$text-size: 20px;
+  // Overwrite var for this context
+  $text-size: 20px;
 
-	color: $color;
-	font: 400 #{$text-size}/#{$line-height} $font;
-	text-decoration: $text-decoration;
+  color: $color;
+  font: 400 #{$text-size}/#{$line-height} $font;
+  text-decoration: $text-decoration;
 
-	// Make global var
-	$var_local: 100px !global;
+  // Make global var
+  $var_local: 100px !global;
 }
 
 .h1 {
-	margin-bottom: $var_local;
+  margin-bottom: $var_local;
 }
 
-.this-#{$selector-name} {  // in selector
-	#{$property}: $color;  // in property name
-	background: url(../dummy.jpg) // in value
+.this-#{$selector-name} { // in selector
+  #{$property}: $color; // in property name
+  background: url(../dummy.jpg) // in value
 }
 
 $var: 0;
 .level-1 {
-	// Visible only in context of .level-1
-	$var: 1em;
-	.level-2 {
-		$var: 2em;
-		margin: $var;
-		// Var doesn't hoists to the top of its scope!
-		$var: 5em;
-	}
-	margin: $var;
+  // Visible only in context of .level-1
+  $var: 1em;
+  .level-2 {
+    $var: 2em;
+    margin: $var;
+    // Var doesn't hoists to the top of its scope!
+    $var: 5em;
+  }
+  margin: $var;
 }
 
 /*------------------------------------------------------------------------------
@@ -56,8 +56,8 @@ $content: "Second content" !default;
 $new_content: "First time content" !default;
 
 .main {
-	content: $content;
-	new_content: $new_content;
+  content: $content;
+  new_content: $new_content;
 }
 
 /*------------------------------------------------------------------------------
@@ -65,10 +65,10 @@ $new_content: "First time content" !default;
 /*----------------------------------------------------------------------------*/
 
 .concatenate_strings {
-	cursor: $property + -resize;
-	&:before {
-		content: "Foo" + Bar;
-		font-family: sans- + serif;
-	}
+  cursor: $property + -resize;
+  &:before {
+    content: "Foo" + Bar;
+    font-family: sans- + serif;
+  }
 
 }
