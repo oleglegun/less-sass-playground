@@ -1,0 +1,50 @@
+.class {
+  color: blue;
+  // Nested selectors (2 level max)
+  a {
+    color: green;
+    span {
+      color: green;
+    }
+  }
+  // Excellent for BEM
+  &__child {
+    color: black;
+  }
+  // Group selectors
+  &:hover,
+  &:focus {
+    background-color: #fff;
+  }
+  & + & {
+    margin-top: 15px;
+  }
+  .parent & {
+    padding: 0;
+  }
+  // Easy to work w/ @media inside classes
+  @media screen and (min-width: 480px) {
+    padding: 30px;
+  }
+}
+
+.parent {
+  .child {
+    // & == .parent .child
+    .root & {
+      width: 40px;
+    }
+    &.good {
+      width: 20px;
+    }
+  }
+}
+
+/*------------------------------------------------------------------------------
+/*  Combinations
+/*----------------------------------------------------------------------------*/
+p, ul, ol {
+  & + & {
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,73 @@
+$text-size: 	10px;
+$line-height: 	1.4;
+$font: 			Arial, Helvetica, sans-serif;
+$color: 		#000;
+$selector_name: h2;
+$dir: 			"../img";
+$property: 		color;
+
+// Sass doesn't support variable hoisting
+$text-decoration: underline;
+
+/**
+ * Variable interpolation
+ */
+
+.h1 {
+	// Overwrite var for this context
+	$text-size: 20px;
+
+	color: $color;
+	font: 400 #{$text-size}/#{$line-height} $font;
+	text-decoration: $text-decoration;
+
+	// Make global var
+	$var_local: 100px !global;
+}
+
+.h1 {
+	margin-bottom: $var_local;
+}
+
+.this-#{$selector-name} {  // in selector
+	#{$property}: $color;  // in property name
+	// background: url(#{$dir}/bg.png) // in value
+}
+
+$var: 0;
+.level-1 {
+	// Visible only in context of .level-1
+	$var: 1em;
+	.level-2 {
+		$var: 2em;
+		margin: $var;
+		// Var doesn't hoists to the top of its scope!
+		$var: 5em;
+	}
+	margin: $var;
+}
+
+/**
+ * Redefine w/ !default (if was not defined)
+ */
+$content: "First content";
+$content: "Second content" !default;
+$new_content: "First time content" !default;
+
+.main {
+	content: $content;
+	new_content: $new_content;
+}
+
+/**
+ * Concatenation (absent in Less)
+ */
+
+.concatenate_strings {
+	cursor: $property + -resize;
+	&:before {
+		content: "Foo" + Bar;
+		font-family: sans- + serif;
+	}
+
+}

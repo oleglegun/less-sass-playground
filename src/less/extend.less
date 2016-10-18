@@ -1,0 +1,130 @@
+/*------------------------------------------------------------------------------
+/*  Расширение классов (наследование, класс добавится к классу из параметров extend(...))
+/*----------------------------------------------------------------------------*/
+
+.a:extend(.b) {
+}
+
+.a {
+  &:extend(.b); // Same result
+}
+
+.class_a {
+  height: 100px;
+  width: 20px;
+  display: block;
+}
+
+.class_b {
+  &:extend(.class_a); // class_b inherits from class_a
+  text-decoration: underline;
+}
+
+.list-unstyled {
+  list-style: none;
+}
+
+nav ul {
+  &:extend(.list-unstyled);
+  background: blue;
+  margin: 0;
+}
+
+/*------------------------------------------------------------------------------
+/*  Расширение классов со всеми вложениями
+/*----------------------------------------------------------------------------*/
+
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+.error.intrusion {
+  background-image: url(../dummy.jpg);
+}
+
+// Нужно использовать 'all' чтобы унаследовать и :hover {} + __.intrusion {}
+.seriousError {
+  &:extend(.error all); // в SCSS не нужен all, расширяется сразу все
+  border-width: 3px;
+}
+
+/*------------------------------------------------------------------------------
+/*  Расширение вложенных селекторов
+/*----------------------------------------------------------------------------*/
+
+.bucket {
+  tr {
+    color: blue;
+  }
+}
+
+.some-class:extend(.bucket tr) {
+  display: block;
+}
+
+.hoverlink {
+  &:extend(a:hover); // We can specify state
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/*------------------------------------------------------------------------------
+/*  Множественные расширения
+/*----------------------------------------------------------------------------*/
+
+.mega-extend {
+  &:extend(.class all, .list-unstyled);
+  background: url("../dummy.jpg");
+}
+
+/*------------------------------------------------------------------------------
+/*  Расширение и @media
+/*----------------------------------------------------------------------------*/
+
+@media screen {
+  // @media, расширяемые для другого @media контекста не работают
+  .selector_in_media_level_1:extend(.selector_in_media_level_2) {}
+
+  @media (min-width: 1024px) {
+    .selector_in_media_level_2 {
+      color: blue;
+    }
+  }
+}
+
+.selector_outside_media:extend(.selector_in_media_level_2) {}
+
+/*------------------------------------------------------------------------------
+/*  Чтобы расширение сработало нужно четкое соответствие селектора!
+/*----------------------------------------------------------------------------*/
+@variable_1: .bucket_1;
+
+@{variable_1} { // Авто подстановка названия класса
+  color: blue;
+}
+
+.test_class_1:extend(.bucket_1) {} // Не сработает, т.к. изначально в коде нет селектора .bucket_1
+
+//После этого объявления уже сработает
+.bucket_1 {
+  color: blue;
+}
+
+@variable_2: .bucket_2;
+
+.test_class_2:extend(@{variable_2}) {} // Тоже не сработает
+
+.bucket_3 {
+  color: blue;
+}
+
+@variable: .test_class_3;
+
+@{variable}:extend(.bucket_3) {} // Сработает, т.к. изначально был селектор .bucket_3
