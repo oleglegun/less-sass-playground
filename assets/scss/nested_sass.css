@@ -1,0 +1,48 @@
+.class {
+    color: blue;
+}
+
+.class a {
+    color: green;
+}
+
+.class a span {
+    color: green;
+}
+
+.class__child {
+    color: black;
+}
+
+.class:hover, .class:focus {
+    background-color: #fff;
+}
+
+.class + .class {
+    margin-top: 15px;
+}
+
+.parent .class {
+    padding: 0;
+}
+
+@media screen and (min-width: 480px) {
+    .class {
+        padding: 30px;
+    }
+}
+
+.root .parent .child {
+    width: 40px;
+}
+
+.parent .child.good {
+    width: 20px;
+}
+
+/*------------------------------------------------------------------------------
+/*  Combinations
+/*----------------------------------------------------------------------------*/
+p + p, ul + p, ol + p, p + ul, ul + ul, ol + ul, p + ol, ul + ol, ol + ol {
+    margin-top: 0;
+}

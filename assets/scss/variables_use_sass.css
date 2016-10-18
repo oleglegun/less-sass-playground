@@ -1,0 +1,45 @@
+/*------------------------------------------------------------------------------
+/*  Variable interpolation
+/*----------------------------------------------------------------------------*/
+.h1 {
+    color: #000;
+    font: 400 20px/1.4 Arial, Helvetica, sans-serif;
+    text-decoration: underline;
+}
+
+.h1 {
+    margin-bottom: 100px;
+}
+
+.this-h2 {
+    color: #000;
+    background: url(./dummy.jpg);
+}
+
+.level-1 {
+    margin: 5em;
+}
+
+.level-1 .level-2 {
+    margin: 2em;
+}
+
+/*------------------------------------------------------------------------------
+/*  Redefine w/ !default (if was not defined)
+/*----------------------------------------------------------------------------*/
+.main {
+    content: "First content";
+    new_content: "First time content";
+}
+
+/*------------------------------------------------------------------------------
+/*  Concatenation (absent in Less)
+/*----------------------------------------------------------------------------*/
+.concatenate_strings {
+    cursor: color-resize;
+}
+
+.concatenate_strings:before {
+    content: "FooBar";
+    font-family: sans-serif;
+}

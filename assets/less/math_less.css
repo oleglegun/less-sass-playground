@@ -1,0 +1,47 @@
+/*------------------------------------------------------------------------------
+/*  Math operations in Less
+/*----------------------------------------------------------------------------*/
+.class_1 {
+    background: #242424 url(./dummy.jpg) 0 0 no-repeat;
+    font-size: 8px;
+    line-height: 4;
+    line-height: 3;
+    line-height: 2;
+    line-height: 1.7;
+    margin-top: 1px;
+    margin-left: 42px;
+}
+
+.class_2 {
+    margin-top: 5px;
+    margin-right: 2px;
+    margin-bottom: 8px;
+    margin-left: 2px;
+    border: 2px solid #222222;
+}
+
+.class_less {
+    margin-top: 10px;
+    margin-right: 12.6px;
+    margin-bottom: 19.6px;
+    margin-left: 15.4px;
+    padding-top: 28px;
+    padding-right: 28px;
+    padding-bottom: 42px;
+    padding-left: 28px;
+}
+
+/*------------------------------------------------------------------------------
+/*  Math w/ colors
+/*----------------------------------------------------------------------------*/
+.color_01 {
+    color: rgba(255, 255, 0, 0.9375);
+}
+
+.color_02 {
+    color: #444444;
+}
+
+.color_03 {
+    color: #333333;
+}
