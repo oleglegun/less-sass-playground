@@ -21,7 +21,10 @@ module.exports = {
         variables_use_sass: './src/sass/variables_use.scss',
 
         math_less: './src/less/math.less',
-        math_sass: './src/sass/math.scss'
+        math_sass: './src/sass/math.scss',
+
+        mixins_less: './src/less/mixins.less',
+        mixins_sass: './src/sass/mixins.scss',
     },
     output: {
         path: './assets',

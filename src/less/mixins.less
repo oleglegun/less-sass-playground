@@ -1,0 +1,110 @@
+/*------------------------------------------------------------------------------
+/*  Regular selectors as mixins
+/*----------------------------------------------------------------------------*/
+
+.class_1 {    // Any selector in Less can act as mixin for another selector
+  color: red;
+
+  &:hover {
+    border: 1px solid red;
+  }
+}
+
+#id_1 {
+  display: block;
+}
+
+.class_2 {
+  .class_1(); // () are used to indicate a mixin
+  #id_1;      // or they can be omitted
+}
+
+/*------------------------------------------------------------------------------
+/*  Hiding mixins from outputting in CSS using ()
+/*----------------------------------------------------------------------------*/
+
+.not_for_css_class() {  // () hide this selector
+  display: block;
+  color: black;
+}
+
+.class_3 {
+  .not_for_css_class();
+  display: none;
+}
+
+/*------------------------------------------------------------------------------
+/*  Namespaces (nested mixins)
+/*----------------------------------------------------------------------------*/
+// Useful for sprites
+#sprite() {
+  .icon-file  { background-position: 0 0; }
+  .icon-close { background-position: 2px 0; }
+}
+
+.icon_1 {
+  #sprite > .icon-file();
+}
+
+.icon_2 {
+  #sprite > .icon-close();
+}
+
+/*------------------------------------------------------------------------------
+/*  Using mixin w/o parent selector
+/*----------------------------------------------------------------------------*/
+
+.generate-columns(@n, @i: 1) when (@i =< @n) { // This is mixin
+  // @n - number of columns
+  // @i - counter from 1 to n
+
+  .column-@{i} {
+    width: (@i * 100% / @n);
+  }
+
+  // Recursive call
+  .generate-columns(@n, (@i + 1));
+}
+
+// Call mixin
+.generate-columns(3);
+
+/*------------------------------------------------------------------------------
+/*  !important in mixin will paste itself to each mixed in rule
+/*----------------------------------------------------------------------------*/
+
+.class_4 {
+  .not_for_css_class() !important;
+}
+
+/*------------------------------------------------------------------------------
+/*  Mixins as Functions (Parametrized)
+/*----------------------------------------------------------------------------*/
+
+.size(@width: 10px, @height: 10px) {
+  width: @width;
+  height: @height;
+}
+
+.class_5 {
+  .size(50px, 100px);
+}
+
+.mixin_1(@color: black, @margin: 10px, @padding: 20px) {
+  color: @color;
+  margin: @margin;
+  padding: @padding;
+}
+.class_6 {
+  .mixin_1(@margin: 20px, @color: #33acac);
+}
+.class_7 {
+  .mixin_1(red; @padding: 40px);
+}
+
+.box-shadow(@x: 0, @y: 0, @blur: 1px, @color: #000) {
+  box-shadow: @arguments;
+}
+.shadow-block {
+  .box-shadow(2px, 5px);
+}
