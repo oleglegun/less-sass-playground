@@ -5,46 +5,44 @@
  * - Base colors (grays)
  */
 
-@gray-20: 			#333333;  // text
-@gray-50: 			#808080;
-@gray-80: 			#cccccc;  // border
-@gray-90: 			#E6E6E6;
-@gray-92: 			#F7F7F9;
+@gray-20: #333333; // text
+@gray-50: #808080;
+@gray-80: #cccccc; // border
+@gray-90: #E6E6E6;
+@gray-92: #F7F7F9;
 
-@green: 			#55AB55;
-@red: 				#E30800;
-@yellow: 			#FFF0B3;
-@orange: 			#FFAC1A;
-@blue: 				#2B2F38;
+@green: #55AB55;
+@red: #E30800;
+@yellow: #FFF0B3;
+@orange: #FFAC1A;
+@blue: #2B2F38;
 
+@text-color: @gray-20;
+@headings-color: @gray-20;
 
-@text-color: 			@gray-20;
-@headings-color: 		@gray-20;
+@link-color: #0088CC;
+@link-color--hover: darken(@link-color, 15%);
 
-@link-color: 			#0088CC;
-@link-color--hover: 	darken(@link-color, 15%);
-
-@border-color: 			@gray-80;
-@border-color--hover: 	#3498DB;
-
+@border-color: @gray-80;
+@border-color--hover: #3498DB;
 
 // 1 rem (root em) equals html tag font size
-@html-size-base: 			10px;
-@font-size: 				1.3rem;
-@font-size--small: 			1.1rem;
+@html-size-base: 10px;
+@font-size: 1.3rem;
+@font-size--small: 1.1rem;
 
-@line-height: 				1.4;
-@line-height--computed: 	1.4rem;
+@line-height: 1.4;
+@line-height--computed: 1.4rem;
 
-@headings-weight: 			700;
-@headings-line-height: 		1.2;
+@headings-weight: 700;
+@headings-line-height: 1.2;
 
-@font-size--h1: 			3rem;
-@font-size--h2: 			2.4rem;
-@font-size--h3: 			1.8rem;
-@font-size--h4: 			1.4rem;
-@font-size--h5: 			@font-size;
-@font-size--h6: 			@font-size;
+@font-size--h1: 3rem;
+@font-size--h2: 2.4rem;
+@font-size--h3: 1.8rem;
+@font-size--h4: 1.4rem;
+@font-size--h5: @font-size;
+@font-size--h6: @font-size;
 
 /*------------------------------------------------------------------------------
 /*  Auto calculate font sizes - variant of modification
@@ -60,9 +58,7 @@
 @font-size--h5: @font-size;
 @font-size--h6: ceil((@font-size * 0.85));
 
-
-
-@font-family: 				"Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family--headings: 	@font-family;
-@font-family--monospace: 	Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family--headings: @font-family;
+@font-family--monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
 

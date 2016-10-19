@@ -1,48 +1,48 @@
 .class {
-    color: blue;
+  color: blue;
 }
 
 .class a {
-    color: green;
+  color: green;
 }
 
 .class a span {
-    color: green;
+  color: green;
 }
 
 .class__child {
-    color: black;
+  color: black;
 }
 
 .class:hover, .class:focus {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .class + .class {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 .parent .class {
-    padding: 0;
+  padding: 0;
 }
 
 @media screen and (min-width: 480px) {
-    .class {
-        padding: 30px;
-    }
+  .class {
+    padding: 30px;
+  }
 }
 
 .root .parent .child {
-    width: 40px;
+  width: 40px;
 }
 
 .parent .child.good {
-    width: 20px;
+  width: 20px;
 }
 
 /*------------------------------------------------------------------------------
 /*  Combinations
 /*----------------------------------------------------------------------------*/
 p + p, ul + p, ol + p, p + ul, ul + ul, ol + ul, p + ol, ul + ol, ol + ol {
-    margin-top: 0;
+  margin-top: 0;
 }

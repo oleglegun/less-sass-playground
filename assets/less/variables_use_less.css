@@ -2,39 +2,33 @@
 /*  Button Block (each block in separate file)
 /*----------------------------------------------------------------------------*/
 .btn {
-    color: black;
-    border: 3px solid black;
+  color: black;
+  border: 3px solid black;
 }
-
 .btn--bg-white {
-    background-color: white;
+  background-color: white;
 }
-
 .btn--bg-red {
-    background-color: red;
+  background-color: red;
 }
-
 .h1 {
-    color: #000;
-    font: 400 20px/1.4 Arial, Helvetica, sans-serif;
-    font: 400 14.28571429px Arial, Helvetica, sans-serif;
-    text-decoration: underline;
+  color: #000;
+  font: 400 20px/1.4 Arial, Helvetica, sans-serif;
+  font: 400 14.28571429px Arial, Helvetica, sans-serif;
+  text-decoration: underline;
 }
-
 /*------------------------------------------------------------------------------
 /*  Interpolation
 /*----------------------------------------------------------------------------*/
 .this-h2 {
-    color: #000;
+  color: #000;
 }
-
 /*------------------------------------------------------------------------------
 /*  Variables redefining
 /*----------------------------------------------------------------------------*/
 .level-1 {
-    margin: 1em;
+  margin: 1em;
 }
-
 .level-1 .level-2 {
-    margin: 5em;
+  margin: 5em;
 }

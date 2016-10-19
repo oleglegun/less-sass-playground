@@ -4,30 +4,73 @@
 /*------------------------------------------------------------------------------
 /*  Basic syntax in Sass
 /*----------------------------------------------------------------------------*/
-.list, nav ul {
-    color: red;
+.list, nav ul, .mega-extend {
+  color: red;
 }
 
 nav ul {
-    background: blue;
+  background: blue;
 }
 
 /*------------------------------------------------------------------------------
 /*  Extend w/ all properties
 /*----------------------------------------------------------------------------*/
-.error, .seriousError {
-    border: 1px #f00;
-    background-color: #fdd;
+.error, .seriousError, .mega-extend {
+  border: 1px #f00;
+  background-color: #fdd;
 }
 
-.error.intrusion, .intrusion.seriousError {
-    background-image: url(./dummy.jpg);
+.error.intrusion, .intrusion.seriousError, .intrusion.mega-extend {
+  background-image: url(./dummy.jpg);
 }
 
 .seriousError {
-    border-width: 3px;
+  border-width: 3px;
 }
 
 /*------------------------------------------------------------------------------
-/*  Extend w/ nested selectors
+/*  Extend w/ nested selectors must be avoided!
 /*----------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------
+/*  Extend w/ pseudo-selectors
+/*----------------------------------------------------------------------------*/
+a:hover, .hoverlink {
+  text-decoration: underline;
+}
+
+/*------------------------------------------------------------------------------
+/*  Multiple extends
+/*----------------------------------------------------------------------------*/
+.mega-extend {
+  border-width: 3px;
+}
+
+/*------------------------------------------------------------------------------
+/*  Not visible extend in CSS
+/*----------------------------------------------------------------------------*/
+#context a.notice, #context a.important {
+  color: blue;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+/*------------------------------------------------------------------------------
+/*  Optional extends (only in SCSS)
+/*----------------------------------------------------------------------------*/
+a.important {
+  color: #000;
+}
+
+/*------------------------------------------------------------------------------
+/*  Extend & @media constructions
+/*----------------------------------------------------------------------------*/
+.error_02 {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+
+@media print {
+  .seriousError {
+    border-width: 3px;
+  }
+}
