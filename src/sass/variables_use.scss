@@ -1,10 +1,10 @@
-$text-size: 10px;
-$line-height: 1.4;
-$font: Arial, Helvetica, sans-serif;
-$color: #000;
+$text-size:     10px;
+$line-height:   1.4;
+$font:          Arial, Helvetica, sans-serif;
+$color:         #000;
 $selector_name: h2;
-$dir: "../img";
-$property: color;
+$dir:           "../img";
+$property:      color;
 
 // Sass doesn't support variable bubbling
 $text-decoration: underline;

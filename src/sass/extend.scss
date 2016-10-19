@@ -10,7 +10,6 @@
 //  @extend .b;
 //}
 
-
 .list {
   color: red;
 }
@@ -28,16 +27,18 @@ nav ul {
   border: 1px #f00;
   background-color: #fdd;
 }
+
 .error.intrusion {
   background-image: url(../dummy.jpg);
 }
+
 .seriousError {
-  @extend .error;  // В Less нужен был all, тут все по умолчанию
-  border-width:3px;
+  @extend .error; // Less needs keyword 'all', Sass doesn't
+  border-width: 3px;
 }
 
 /*------------------------------------------------------------------------------
-/*  Extend w/ nested selectors
+/*  Extend w/ nested selectors must be avoided!
 /*----------------------------------------------------------------------------*/
 
 //.bucket {
@@ -47,9 +48,67 @@ nav ul {
 //}
 //
 //.some-class {
-//  @extend .bucket tr; // невозможно (в Less возможно)
+//  @extend .bucket tr; // Error, no nested selector extend in Sass
 //  display: block;
 //}
 
+/*------------------------------------------------------------------------------
+/*  Extend w/ pseudo-selectors
+/*----------------------------------------------------------------------------*/
 
+.hoverlink {
+  @extend a:hover;
+}
 
+a:hover {
+  text-decoration: underline;
+}
+
+/*------------------------------------------------------------------------------
+/*  Multiple extends
+/*----------------------------------------------------------------------------*/
+
+.mega-extend {
+  @extend .error;
+  @extend .list; // Or @extend .error, .list;
+  border-width: 3px;
+}
+
+/*------------------------------------------------------------------------------
+/*  Not visible extend in CSS
+/*----------------------------------------------------------------------------*/
+
+#context a%extreme {
+  color: blue;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.notice {
+  @extend %extreme;
+}
+
+/*------------------------------------------------------------------------------
+/*  Optional extends (only in SCSS)
+/*----------------------------------------------------------------------------*/
+
+a.important {
+  color: #000;
+  @extend .notice !optional; // Works only if .notice exists
+}
+
+/*------------------------------------------------------------------------------
+/*  Extend & @media constructions
+/*----------------------------------------------------------------------------*/
+
+.error_02 {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+
+@media print {
+  .seriousError {
+    // @extend .error_02; // Doesn't work, different context error
+    border-width: 3px;
+  }
+}

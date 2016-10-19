@@ -2,41 +2,41 @@
 /*  Math operations in Less
 /*----------------------------------------------------------------------------*/
 
-@text-size: 14px;
+@text-size:   14px;
 @line-height: 1.4em;
-@color: #222222;
-@border: 1px;
+@color:       #222222;
+@border:      1px;
 
 .class_1 {
-  background: (@color + 2) url(../dummy.jpg) 0 0 no-repeat; // parentheses in complex parameters
-  font-size: (@text-size + 2) / 2; // Group math operations
+  background:  (@color + 2) url(../dummy.jpg) 0 0 no-repeat; // parentheses in complex parameters
+  font-size:   (@text-size + 2) / 2; // Group math operations
   line-height: ceil(3.4);
   line-height: floor(3.4);
   line-height: round(1.67);
   line-height: round(1.67, 1); // 1 - decimal places
-  margin-top: min(3px, 42px, 1px, 16px);
+  margin-top:  min(3px, 42px, 1px, 16px);
   margin-left: max(3px, 42px, 1px, 16px);
 }
 
 .class_2 {
-  margin-top: 4px + 1; //px
-  margin-right: 4px - 2em; // == 4 - 2 => px!
-  margin-bottom: 4px * 2; // px
-  margin-left: 4px / 2em; // px
+  margin-top:    4px + 1;   //px
+  margin-right:  4px - 2em; // == 4 - 2 => px!
+  margin-bottom: 4px * 2;   // px
+  margin-left:   4px / 2em; // px
 
   border: (@border * 2) solid @color;
 }
 
 .class_less {
-  margin-top: @text-size / @line-height;
-  margin-right: @text-size - @line-height;
+  margin-top:    @text-size / @line-height;
+  margin-right:  @text-size - @line-height;
   margin-bottom: @text-size * @line-height;
-  margin-left: @text-size + @line-height;
+  margin-left:   @text-size + @line-height;
 
-  padding-top: @text-size * 2rem;
-  padding-right: @text-size * 2%;
+  padding-top:    @text-size * 2rem;
+  padding-right:  @text-size * 2%;
   padding-bottom: @text-size * 3ex;
-  padding-left: @text-size * 2vh;
+  padding-left:   @text-size * 2vh;
 }
 
 /*------------------------------------------------------------------------------

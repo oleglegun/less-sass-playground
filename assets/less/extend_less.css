@@ -7,99 +7,83 @@
 /*----------------------------------------------------------------------------*/
 .class_a,
 .class_b {
-    height: 100px;
-    width: 20px;
-    display: block;
+  height: 100px;
+  width: 20px;
+  display: block;
 }
-
 .class_b {
-    text-decoration: underline;
+  text-decoration: underline;
 }
-
 .list-unstyled,
 nav ul,
 .mega-extend {
-    list-style: none;
+  list-style: none;
 }
-
 nav ul {
-    background: blue;
-    margin: 0;
+  background: blue;
+  margin: 0;
 }
-
 /*------------------------------------------------------------------------------
 /*  Extend w/ all properties
 /*----------------------------------------------------------------------------*/
 .error,
 .seriousError {
-    border: 1px #f00;
-    background-color: #fdd;
+  border: 1px #f00;
+  background-color: #fdd;
 }
-
 .error:hover,
 .seriousError:hover {
-    color: #000;
+  color: #000;
 }
-
 .error.intrusion,
 .seriousError.intrusion {
-    background-image: url(./dummy.jpg);
+  background-image: url(./dummy.jpg);
 }
-
 .seriousError {
-    border-width: 3px;
+  border-width: 3px;
 }
-
 /*------------------------------------------------------------------------------
 /*  Extend w/ nested selectors
 /*----------------------------------------------------------------------------*/
 .bucket tr,
 .some-class {
-    color: blue;
+  color: blue;
 }
-
 .some-class {
-    display: block;
+  display: block;
 }
-
 a:hover,
 .hoverlink {
-    text-decoration: underline;
+  text-decoration: underline;
 }
-
 /*------------------------------------------------------------------------------
 /*  Multiple extends
 /*----------------------------------------------------------------------------*/
 .mega-extend {
-    background: url(./dummy.jpg);
+  background: url(./dummy.jpg);
 }
-
 /*------------------------------------------------------------------------------
 /*  Extend & @media constructions
 /*----------------------------------------------------------------------------*/
 @media screen {
 }
-
 @media screen and (min-width: 1024px) {
-    .selector_in_media_level_2,
-    .selector_outside_media {
-        color: blue;
-    }
+  .selector_in_media_level_2,
+  .selector_outside_media {
+    color: blue;
+  }
 }
-
 /*------------------------------------------------------------------------------
 /*  Generated selectors don't work w/ extend - must be defined literally
 /*----------------------------------------------------------------------------*/
 .bucket_1 {
-    color: blue;
+  color: blue;
 }
-
 .bucket_1,
 .test_class_1 {
-    color: blue;
+  color: blue;
 }
-
 .bucket_3,
 .test_class_3 {
-    color: blue;
+  color: blue;
 }
