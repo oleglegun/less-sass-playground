@@ -78,7 +78,7 @@
 }
 
 /*------------------------------------------------------------------------------
-/*  Mixins as Functions (Parametrized)
+/*  Mixins as Functions (Parametrized), useful for generating buttons
 /*----------------------------------------------------------------------------*/
 
 .size(@width: 10px, @height: 10px) {
@@ -107,4 +107,43 @@
 }
 .shadow-block {
   .box-shadow(2px, 5px);
+}
+
+/*------------------------------------------------------------------------------
+/*  Case in parameters (like constructors)
+/*----------------------------------------------------------------------------*/
+
+.mixin_2(dark, @color) {
+  color: darken(@color, 30%);
+}
+.mixin_2(light, @color) {
+  color: lighten(@color, 30%);
+}
+.mixin_2(@_, @color) {  // @_ - Will be executed anyway
+  display: block;
+}
+
+.class_8 {
+  .mixin_2(dark, #fff);
+}
+.class_9 {
+  .mixin_2(light, #000);
+}
+
+/*------------------------------------------------------------------------------
+/*  Polymorphism
+/*----------------------------------------------------------------------------*/
+
+.mixin_3(@a) {  // If called w/ 1 parameter
+  color: @a;
+}
+.mixin_3(@a, @b) {  // If called w/ 2 parameters
+  color: fadeout(@a, @b);
+}
+
+.class_10 {
+  .mixin_3(#fff);
+}
+.class_11 {
+  .mixin_3(#fff, 50%);
 }
