@@ -1,0 +1,77 @@
+/*------------------------------------------------------------------------------
+/*  Mixins as functions, Add variables to particular context
+/*----------------------------------------------------------------------------*/
+
+.mixin_1() {
+  @width: 50px;
+  @height: 50%;
+}
+
+.caller {
+  .mixin_1();  // Defines @width and @height in .caller context
+  width: @width;
+  height: @height;
+}
+
+.average(@x, @y) {
+  @average: ((@x + @y) / 2);
+}
+
+.class_1 {
+  .average(50px, 25px);
+  padding: @average;
+}
+
+/*------------------------------------------------------------------------------
+/*  Set of rules in mixins
+/*----------------------------------------------------------------------------*/
+
+.desktop-and-old-ie(@rules) {
+  @media screen and (min-width: 800px) { @rules(); }
+  html.ie9 &                           { @rules(); }
+}
+
+.class_3 {
+  background-color: red;
+
+  .desktop-and-old-ie({ background-color: blue;
+  });
+}
+
+/*------------------------------------------------------------------------------
+/*  Mixins w/ conditions
+/*----------------------------------------------------------------------------*/
+
+.mixin_2(@a) when (lightness(@a) >= 50%) {
+  background-color: black;
+}
+.mixin_2(@a) when (lightness(@a) < 50%) {
+  background-color: white;
+}
+.mixin_2(@a) {
+  color: @a;
+}
+
+.class_4 { .mixin_2(hsl(0,0,0%)) }
+.class_6 { .mixin_2(hsl(0,0,100%)) }
+
+@media: desktop;
+
+.mixin_3 (@a) when (@media = mobile) { width: @a; }
+.mixin_3 (@a) when (@media = desktop) { width: @a + 200; }
+
+.mixin_3-1 (@a) {
+  & when (@media = mobile) { width: @a; }
+  & when (@media = desktop) { width: @a + 200; }
+}
+
+.class_7 {
+  .mixin_3(100px);
+}
+
+.class_7-1 {
+  .mixin_3-1(100px);
+}
+
+.mixin_4 {@a; @b} when (@a > @b) { width: @a }
+.mixin_4 {@a; @b} when (@a <= @b) { width: @b }

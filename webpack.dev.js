@@ -23,8 +23,10 @@ module.exports = {
         math_less: './src/less/math.less',
         math_sass: './src/sass/math.scss',
 
-        mixins_less: './src/less/mixins.less',
-        mixins_sass: './src/sass/mixins.scss',
+        mixins_basic_less: './src/less/mixins-basic.less',
+        mixins_basic_sass: './src/sass/mixins-basic.scss',
+
+        mixins_advanced_less: './src/less/mixins-advanced.less'
     },
     output: {
         path: './assets',
