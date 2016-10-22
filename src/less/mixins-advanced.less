@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------------------
-/*  Mixins as functions, Add variables to particular context
+/*  Mixins as functions, Add variables to a particular context
 /*----------------------------------------------------------------------------*/
 
 .mixin_1() {
@@ -34,8 +34,7 @@
 .class_3 {
   background-color: red;
 
-  .desktop-and-old-ie({ background-color: blue;
-  });
+  .desktop-and-old-ie({ background-color: blue; });
 }
 
 /*------------------------------------------------------------------------------
@@ -55,14 +54,18 @@
 .class_4 { .mixin_2(hsl(0,0,0%)) }
 .class_6 { .mixin_2(hsl(0,0,100%)) }
 
-@media: desktop;
+/*------------------------------------------------------------------------------
+/*  Compare arguments
+/*----------------------------------------------------------------------------*/
 
-.mixin_3 (@a) when (@media = mobile) { width: @a; }
-.mixin_3 (@a) when (@media = desktop) { width: @a + 200; }
+@media_var: desktop;
+
+.mixin_3(@a) when (@media_var = mobile) { width: @a; }
+.mixin_3(@a) when (@media_var = desktop) { width: @a + 200; }
 
 .mixin_3-1 (@a) {
-  & when (@media = mobile) { width: @a; }
-  & when (@media = desktop) { width: @a + 200; }
+  & when (@media_var = mobile) { width: @a; }
+  & when (@media_var = desktop) { width: @a + 200; }
 }
 
 .class_7 {
@@ -73,5 +76,53 @@
   .mixin_3-1(100px);
 }
 
-.mixin_4 {@a; @b} when (@a > @b) { width: @a }
-.mixin_4 {@a; @b} when (@a <= @b) { width: @b }
+.mixin_4(@a, @b) when (@a > @b) { width: @a }
+.mixin_4(@a, @b) when (@a <= @b) { width: @b }
+
+/*------------------------------------------------------------------------------
+/*  Logic operators (AND, OR, NOT)
+/*----------------------------------------------------------------------------*/
+
+.mixin(@a) when (isnumber(@a)) and (@a > 0) { display: block; }
+.mixin(@a) when (@a > 10), (@a < -10) { display: block; }
+.mixin(@b) when not (@b > 0) { display: block; }
+
+/*------------------------------------------------------------------------------
+/*  Check variable type
+/*----------------------------------------------------------------------------*/
+
+.mixin(@a, @b: 0) when (isnumber(@b)) { display: block; }
+.mixin(@a, @b: black) when (iscolor(@b)) { display: block; }
+
+.class_8 {
+  .mixin(-50);
+}
+
+//iscolor
+//isnumber
+//isstring("string"); // True
+//isurl
+
+//ispixel
+//ispercentage
+//isem
+//isunit
+
+.class_9 {
+  content: iscolor(#fff);
+}
+
+/*------------------------------------------------------------------------------
+/* List data type used as arguments for mixin
+/*----------------------------------------------------------------------------*/
+
+.colors(@val) {
+  color: extract(@val, 1);
+  background-color: extract(@val, 2);
+  border-color: extract(@val, 3);
+}
+
+@values: #ff0000, #00ff00, #0000ff;
+.class_10 {
+  .colors(@values);
+}
