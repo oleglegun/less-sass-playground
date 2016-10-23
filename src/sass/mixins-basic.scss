@@ -1,0 +1,131 @@
+/*------------------------------------------------------------------------------
+/*  Common selectors are not working as mixins
+/*----------------------------------------------------------------------------*/
+
+//.class_1 { color: red; }
+//
+//.class_2 {
+//  @include class_1;
+//}
+
+/*------------------------------------------------------------------------------
+/*  Explicitly define mixin, thus mixin is always hidden in CSS
+/*----------------------------------------------------------------------------*/
+
+@mixin text {
+  font-size: 20px;
+  color: #0000ff;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+.class_1 {
+  @include text;
+}
+
+@mixin my-links {
+  a {
+    color: blue;
+    background-color: #4d4d4d;
+  }
+}
+
+@include my-links;
+
+/*------------------------------------------------------------------------------
+/*  !important is now used in Sass
+/*----------------------------------------------------------------------------*/
+
+//.class_2 {
+//  @include text !important;
+//}
+
+/*------------------------------------------------------------------------------
+/*  Mixins w/ parameters
+/*----------------------------------------------------------------------------*/
+
+@mixin size($width: 10px, $height: 10px) {
+  width: $width;
+  height: $height;
+}
+
+.class_5 {
+  @include size(50px, 100px);
+}
+
+@mixin mixin_1($color: black, $margin: 10px, $padding: 20px) {
+  color: $color;
+  margin: $margin;
+  padding: $padding;
+}
+
+.class_6 {
+  @include mixin_1($margin: 20px, $color: #33acfe);
+}
+
+.class_7 {
+  @include mixin_1(red, $padding: 40px);
+}
+
+/*------------------------------------------------------------------------------
+/*  All arguments interpolated (in Less we can use @arguments instead)
+/*----------------------------------------------------------------------------*/
+
+@mixin box-shadow($x: 0, $y: 0, $blur: 1px, $color: #ff0) {
+  $arg: #{$x} #{$y} #{$blur} #{$color};
+  box-shadow: $arg;
+}
+
+.shadow-block {
+  @include box-shadow(2px, 5px);
+}
+
+/*------------------------------------------------------------------------------
+/*  Conditions, argument comparison
+/*----------------------------------------------------------------------------*/
+
+@mixin mixin_2($function, $color) {
+  @if $function == dark {
+    color: darken($color, 10%);
+  }
+  @else if $function == light {
+    color: lighten($color, 10%);
+  }
+  display: block;
+}
+
+.class_8 {
+  @include mixin_2(light, #ddd);
+}
+
+.class_9 {
+  @include mixin_2(dark, #ddd);
+}
+
+/*------------------------------------------------------------------------------
+/*  Arrays
+/*----------------------------------------------------------------------------*/
+
+@mixin colors($text, $background, $border) {
+  color: $text;
+  background-color: $background;
+  border-color: $border;
+}
+
+$values: #f00, #0f0, #00f;
+
+.class_10 {
+  @include colors($values...);
+}
+
+/*------------------------------------------------------------------------------
+/*  Hash table
+/*----------------------------------------------------------------------------*/
+
+$hash-map: (text: #f00, background: #0f0, border: #00f);
+
+.class_11 {
+  @include colors($hash-map...);
+}
