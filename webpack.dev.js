@@ -26,7 +26,8 @@ module.exports = {
         mixins_basic_less: './src/less/mixins-basic.less',
         mixins_basic_sass: './src/sass/mixins-basic.scss',
 
-        mixins_advanced_less: './src/less/mixins-advanced.less'
+        mixins_advanced_less: './src/less/mixins-advanced.less',
+        mixins_advanced_scss: './src/less/mixins-advanced.less'
     },
     output: {
         path: './assets',
