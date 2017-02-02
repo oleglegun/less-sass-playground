@@ -13,6 +13,9 @@
 .class__child {
   color: black;
 }
+.class__child--modifier {
+  color: #2B2F38;
+}
 .class:hover,
 .class:focus {
   background-color: #fff;

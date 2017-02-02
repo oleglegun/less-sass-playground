@@ -10,6 +10,9 @@
   // Excellent for BEM
   &__child {
     color: black;
+    &--modifier {
+      color: #2B2F38;
+    }
   }
   // Group selectors
   &:hover,
